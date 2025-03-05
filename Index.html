@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>iPortici - Casa Vacanze a Chiavari</title>
+  <style>
+    /* Stili di base */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f4f4;
+      color: #333;
+      line-height: 1.6;
+    }
+    header {
+      background: url('banner.jpg') no-repeat center center/cover;
+      height: 300px;
+      position: relative;
+    }
+    header h1 {
+      position: absolute;
+      bottom: 20px;
+      left: 20px;
+      color: #fff;
+      background: rgba(0, 0, 0, 0.5);
+      padding: 10px 20px;
+      border-radius: 4px;
+    }
+    nav {
+      background: #333;
+      padding: 10px 0;
+    }
+    nav ul {
+      list-style: none;
+      display: flex;
+      justify-content: center;
+    }
+    nav ul li {
+      margin: 0 15px;
+    }
+    nav ul li a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    .container {
+      width: 90%;
+      max-width: 1200px;
+      margin: 20px auto;
+      padding: 20px;
+      background: #fff;
+      border-radius: 4px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    h2 {
+      margin-bottom: 15px;
+      color: #333;
+    }
+    p {
+      margin-bottom: 15px;
+    }
+    /* Form di prenotazione */
+    .booking-form form {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 15px;
+    }
+    .booking-form input,
+    .booking-form select {
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-size: 16px;
+    }
+    .booking-form button {
+      background: #333;
+      color: #fff;
+      padding: 10px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+    .booking-form button:hover {
+      background: #555;
+    }
+    footer {
+      background: #333;
+      color: #fff;
+      text-align: center;
+      padding: 15px 0;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>iPortici</h1>
+  </header>
+  <nav>
+    <ul>
+      <li><a href="#home">Home</a></li>
+      <li><a href="#prenotazione">Prenotazione</a></li>
+      <li><a href="#contatti">Contatti</a></li>
+    </ul>
+  </nav>
+  <div class="container">
+    <!-- Sezione Home -->
+    <section id="home">
+      <h2>Benvenuti a iPortici</h2>
+      <p>Scopri il comfort e l'eleganza di una casa vacanze a Chiavari. iPortici è l'ideale per chi cerca relax e servizi di alta qualità durante la propria vacanza.</p>
+      <!-- Qui potresti aggiungere una galleria di immagini -->
+    </section>
+
+    <!-- Sezione Prenotazione -->
+    <section id="prenotazione">
+      <h2>Prenota il tuo soggiorno</h2>
+      <div class="booking-form">
+        <form id="bookingForm">
+          <label for="name">Nome:</label>
+          <input type="text" id="name" name="name" placeholder="Il tuo nome" required>
+          
+          <label for="email">Email:</label>
+          <input type="email" id="email" name="email" placeholder="La tua email" required>
+          
+          <label for="phone">Telefono:</label>
+          <input type="tel" id="phone" name="phone" placeholder="Il tuo numero di telefono" required>
+          
+          <label for="checkin">Data di Arrivo:</label>
+          <input type="date" id="checkin" name="checkin" required>
+          
+          <label for="checkout">Data di Partenza:</label>
+          <input type="date" id="checkout" name="checkout" required>
+          
+          <label for="guests">Numero di ospiti:</label>
+          <select id="guests" name="guests">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+          </select>
+          
+          <button type="submit">Prenota</button>
+        </form>
+      </div>
+    </section>
+
+    <!-- Sezione Contatti -->
+    <section id="contatti">
+      <h2>Contatti</h2>
+      <p>Per maggiori informazioni, scrivici a <a href="mailto:info@iportici.it">info@iportici.it</a> o chiamaci al +39 0123 456789.</p>
+    </section>
+  </div>
+  <footer>
+    <p>&copy; 2025 iPortici - Casa Vacanze a Chiavari. Tutti i diritti riservati.</p>
+  </footer>
+  
+  <script>
+    // Gestione del form: al submit, mostra un messaggio di conferma
+    document.getElementById('bookingForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      alert('La tua prenotazione è stata inviata! Ti contatteremo a breve.');
+      // Qui puoi integrare una chiamata API per processare la prenotazione o inviarla via email.
+      this.reset();
+    });
+  </script>
+</body>
+</html>
