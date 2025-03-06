@@ -53,20 +53,7 @@
       max-width: 100%;
       height: auto;
     }
-    /* Hamburger: nascosto su desktop */
-    .hamburger {
-      display: none;
-      flex-direction: column;
-      cursor: pointer;
-    }
-    .hamburger span {
-      display: block;
-      width: 25px;
-      height: 3px;
-      margin: 5px;
-      background: #333;
-    }
-    /* Menu di navigazione */
+    /* Menu a destra */
     ul.menu {
       list-style: none;
       display: flex;
@@ -77,7 +64,7 @@
       margin-left: 20px;
     }
     ul.menu li a {
-      color: #333; 
+      color: #333; /* Scritte scure */
       text-decoration: none;
       font-weight: bold;
       transition: color 0.3s ease;
@@ -85,7 +72,7 @@
     ul.menu li a:hover {
       color: #ff9800;
     }
-    /* Sezione Presentazione */
+    /* Sezione Presentazione con sfondo trasparente sotto la casella di testo */
     #presentazione {
       background: url('images/sfondo_present.jpg') no-repeat center center/cover;
       color: #fff;
@@ -96,7 +83,7 @@
       justify-content: center;
     }
     .presentation-box {
-      background-color: rgba(0, 0, 0, 0.5);
+      background-color: rgba(0, 0, 0, 0.5); /* Sfondo semi-trasparente */
       padding: 20px;
       border-radius: 10px;
       max-width: 700px;
@@ -178,40 +165,36 @@
       font-weight: bold;
       cursor: pointer;
     }
-    /* Sezione Tariffe */
-    #tariffe {
-      background: #f4f4f4;
+    
+    /* Sezione Presentazione con sfondo trasparente sotto la casella di testo */
+    #prezzi {
+      background: url('images/sfondo_present.jpg') no-repeat center center/cover;
+      color: #fff;
       text-align: center;
-      padding: 60px 0;
+      min-height: 600px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
-    #tariffe h2 {
-      font-size: 2em;
+    .prezzi-box {
+      background-color: rgba(0, 0, 0, 0.5); /* Sfondo semi-trasparente */
+      padding: 20px;
+      border-radius: 10px;
+      max-width: 700px;
+      width: 90%;
+      text-align: center;
+    }
+    #prezzi h1 {
+      font-size: 3em;
       margin-bottom: 20px;
     }
-    .tariffe-table {
-      width: 80%;
-      max-width: 600px;
-      margin: 20px auto;
-      border-collapse: collapse;
-      background: #fff;
-      border-radius: 10px;
-      overflow: hidden;
-      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    #prezzi p {
+      font-size: 1.2em;
+      margin-bottom: 30px;
     }
-    .tariffe-table th, .tariffe-table td {
-      padding: 15px;
-      border: 1px solid #ddd;
-    }
-    .tariffe-table th {
-      background: #ff9800;
-      color: #fff;
-      font-size: 1.1em;
-    }
-    .tariffe-table tr:nth-child(even) {
-      background: #f9f9f9;
-    }
-    /* Sezione Prenotazione */
-    #prenotazione {
+    
+     /* Sezione Prenotazione */
+     #prenotazione {
       text-align: center;
     }
     #prenotazione h2 {
@@ -266,50 +249,6 @@
     html {
       scroll-behavior: smooth;
     }
-    
-    /* Media Queries per dispositivi mobili */
-    @media (max-width: 768px) {
-      nav .container {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-      /* Mostra l'hamburger e nascondi il menu per default */
-      .hamburger {
-        display: flex;
-      }
-      ul.menu {
-        display: none;
-        flex-direction: column;
-        width: 100%;
-      }
-      ul.menu.active {
-        display: flex;
-      }
-      ul.menu li {
-        margin: 10px 0;
-      }
-      /* Riduzione dell'altezza minima delle sezioni per dispositivi più piccoli */
-      #presentazione, #tariffe {
-        min-height: 400px;
-      }
-      /* Riduzione delle dimensioni dei titoli e dei testi nella presentazione */
-      #presentazione h1 {
-        font-size: 2em;
-      }
-      #presentazione p {
-        font-size: 1em;
-      }
-      .presentation-box {
-        width: 100%;
-        padding: 10px;
-      }
-      section {
-        padding: 40px 0;
-      }
-      .gallery-grid {
-        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-      }
-    }
   </style>
 </head>
 <body>
@@ -319,23 +258,17 @@
       <div class="logo">
         <a href="#presentazione"><img src="images/LOGO.png" alt="Logo i Portici"></a>
       </div>
-      <!-- Hamburger visibile solo in mobile -->
-      <div class="hamburger" onclick="toggleMenu()">
-        <span></span>
-        <span></span>
-        <span></span>
-      </div>
       <ul class="menu">
-        <li><a href="#presentazione">Presentazione</a></li>
+        <li><a href="#presentazione">I Portici</a></li>
         <li><a href="#gallery">Gallery</a></li>
         <li><a href="#tariffe">Tariffe</a></li>
-        <li><a href="#prenotazione">Prenotazioni</a></li>
+        <li><a href="#prenotazione">Prenota</a></li>
       </ul>
     </div>
   </nav>
   <div class="spacer"></div>
   
-  <!-- Sezione Presentazione -->
+  <!-- Sezione Presentazione con contenitore trasparente centrato -->
   <section id="presentazione">
     <div class="container">
       <div class="presentation-box">
@@ -351,6 +284,7 @@
     <div class="container">
       <h2>Gallery</h2>
       <div class="gallery-grid">
+        <!-- Immagini segnaposto: sostituisci con le foto reali -->
         <div class="gallery-item">
           <img src="images/CHIAVARI-80-scaled.jpg" alt="Foto 1">
         </div>
@@ -372,7 +306,7 @@
     <span class="close">&times;</span>
     <img class="lightbox-content" id="lightbox-img" alt="Immagine ingrandita">
   </div>
-  
+
   <!-- Sezione Tariffe -->
   <section id="tariffe">
     <div class="container">
@@ -397,7 +331,7 @@
       </table>
     </div>
   </section>
-  
+
   <!-- Sezione Prenotazione / Richiesta Info -->
   <section id="prenotazione">
     <div class="container">
@@ -464,12 +398,40 @@
         }
       });
     });
-    
-    // Funzione per il menù hamburger
-    function toggleMenu() {
-      const menu = document.querySelector('ul.menu');
-      menu.classList.toggle('active');
-    }
   </script>
+  <!-- Stili CSS per la sezione Tariffe -->
+  <style>
+    #tariffe {
+      background: #f4f4f4;
+      text-align: center;
+      padding: 60px 0;
+    }
+    #tariffe h2 {
+      font-size: 2em;
+      margin-bottom: 20px;
+    }
+    .tariffe-table {
+      width: 80%;
+      max-width: 600px;
+      margin: 20px auto;
+      border-collapse: collapse;
+      background: #fff;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    }
+    .tariffe-table th, .tariffe-table td {
+      padding: 15px;
+      border: 1px solid #ddd;
+    }
+    .tariffe-table th {
+      background: #ff9800;
+      color: #fff;
+      font-size: 1.1em;
+    }
+    .tariffe-table tr:nth-child(even) {
+      background: #f9f9f9;
+    }
+  </style>
 </body>
 </html>
