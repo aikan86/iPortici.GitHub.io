@@ -45,8 +45,7 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      /* Aggiungiamo posizione relativa per posizionare il menu assolutamente */
-      position: relative;
+      position: relative; /* Per posizionare il menu assolutamente */
     }
     /* Logo resizable */
     .logo img {
@@ -276,28 +275,27 @@
         align-items: center;
         justify-content: space-between;
       }
-      /* Hamburger visibile solo in mobile */
+      /* Mostra l'hamburger */
       .hamburger {
         display: flex;
       }
-      /* Il menu sarà posizionato in modo assoluto, centrato e sotto la nav */
+      /* Il menu mobile sarà posizionato in modo assoluto, sotto la nav, ancorato a destra */
       ul.menu {
         display: none;
         flex-direction: column;
         position: absolute;
-        left: 50%;
-        transform: translateX(-50%);
+        right: 0;
         top: 100%;
         background: #f8f8f8;
-        width: auto;
         padding: 10px 0;
         box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        width: auto;
       }
       ul.menu.active {
         display: flex;
       }
       ul.menu li {
-        margin: 10px 0;
+        margin: 10px 20px 10px 0;
       }
       /* Riduzione dell'altezza minima delle sezioni per dispositivi più piccoli */
       #presentazione, #tariffe {
@@ -323,17 +321,17 @@
   </style>
 </head>
 <body>
-  <!-- Navigazione fissa con logo a sinistra e menu a destra -->
+  <!-- Navigazione fissa con logo a sinistra -->
   <nav>
     <div class="container">
       <div class="logo">
         <a href="#presentazione"><img src="images/LOGO.png" alt="Logo i Portici"></a>
       </div>
       <ul class="menu">
-        <li><a href="#presentazione">I Portici</a></li>
+        <li><a href="#presentazione">Presentazione</a></li>
         <li><a href="#gallery">Gallery</a></li>
         <li><a href="#tariffe">Tariffe</a></li>
-        <li><a href="#prenotazione">Prenota</a></li>
+        <li><a href="#prenotazione">Prenotazioni</a></li>
       </ul>
       <!-- Hamburger visibile solo in mobile, posizionato a destra -->
       <div class="hamburger" onclick="toggleMenu()">
