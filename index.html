@@ -45,6 +45,8 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
+      /* Aggiungiamo posizione relativa per posizionare il menu assolutamente */
+      position: relative;
     }
     /* Logo resizable */
     .logo img {
@@ -274,21 +276,28 @@
         align-items: center;
         justify-content: space-between;
       }
-      /* Nascondi il menu e mostra l'hamburger */
+      /* Hamburger visibile solo in mobile */
+      .hamburger {
+        display: flex;
+      }
+      /* Il menu sarà posizionato in modo assoluto, centrato e sotto la nav */
       ul.menu {
         display: none;
         flex-direction: column;
-        width: 100%;
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        top: 100%;
+        background: #f8f8f8;
+        width: auto;
+        padding: 10px 0;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.2);
       }
       ul.menu.active {
         display: flex;
-        margin-top: 10px;
       }
       ul.menu li {
         margin: 10px 0;
-      }
-      .hamburger {
-        display: flex;
       }
       /* Riduzione dell'altezza minima delle sezioni per dispositivi più piccoli */
       #presentazione, #tariffe {
@@ -321,10 +330,10 @@
         <a href="#presentazione"><img src="images/LOGO.png" alt="Logo i Portici"></a>
       </div>
       <ul class="menu">
-        <li><a href="#presentazione">Presentazione</a></li>
+        <li><a href="#presentazione">I Portici</a></li>
         <li><a href="#gallery">Gallery</a></li>
         <li><a href="#tariffe">Tariffe</a></li>
-        <li><a href="#prenotazione">Prenotazioni</a></li>
+        <li><a href="#prenotazione">Prenota</a></li>
       </ul>
       <!-- Hamburger visibile solo in mobile, posizionato a destra -->
       <div class="hamburger" onclick="toggleMenu()">
@@ -440,7 +449,7 @@
     </div>
   </footer>
   
-  <!-- Script per il Lightbox -->
+  <!-- Script per il Lightbox e il menu hamburger -->
   <script>
     document.addEventListener('DOMContentLoaded', function(){
       const lightbox = document.getElementById('lightbox');
