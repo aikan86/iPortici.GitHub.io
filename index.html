@@ -53,19 +53,6 @@
       max-width: 100%;
       height: auto;
     }
-    /* Hamburger: nascosto su desktop */
-    .hamburger {
-      display: none;
-      flex-direction: column;
-      cursor: pointer;
-    }
-    .hamburger span {
-      display: block;
-      width: 25px;
-      height: 3px;
-      margin: 5px;
-      background: #333;
-    }
     /* Menu di navigazione */
     ul.menu {
       list-style: none;
@@ -84,6 +71,19 @@
     }
     ul.menu li a:hover {
       color: #ff9800;
+    }
+    /* Hamburger (nascosto su desktop) */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+    }
+    .hamburger span {
+      display: block;
+      width: 25px;
+      height: 3px;
+      margin: 5px;
+      background: #333;
     }
     /* Sezione Presentazione */
     #presentazione {
@@ -270,13 +270,11 @@
     /* Media Queries per dispositivi mobili */
     @media (max-width: 768px) {
       nav .container {
-        flex-direction: column;
-        align-items: flex-start;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
       }
-      /* Mostra l'hamburger e nascondi il menu per default */
-      .hamburger {
-        display: flex;
-      }
+      /* Nascondi il menu e mostra l'hamburger */
       ul.menu {
         display: none;
         flex-direction: column;
@@ -284,15 +282,18 @@
       }
       ul.menu.active {
         display: flex;
+        margin-top: 10px;
       }
       ul.menu li {
         margin: 10px 0;
+      }
+      .hamburger {
+        display: flex;
       }
       /* Riduzione dell'altezza minima delle sezioni per dispositivi più piccoli */
       #presentazione, #tariffe {
         min-height: 400px;
       }
-      /* Riduzione delle dimensioni dei titoli e dei testi nella presentazione */
       #presentazione h1 {
         font-size: 2em;
       }
@@ -319,18 +320,18 @@
       <div class="logo">
         <a href="#presentazione"><img src="images/LOGO.png" alt="Logo i Portici"></a>
       </div>
-      <!-- Hamburger visibile solo in mobile -->
-      <div class="hamburger" onclick="toggleMenu()">
-        <span></span>
-        <span></span>
-        <span></span>
-      </div>
       <ul class="menu">
         <li><a href="#presentazione">Presentazione</a></li>
         <li><a href="#gallery">Gallery</a></li>
         <li><a href="#tariffe">Tariffe</a></li>
         <li><a href="#prenotazione">Prenotazioni</a></li>
       </ul>
+      <!-- Hamburger visibile solo in mobile, posizionato a destra -->
+      <div class="hamburger" onclick="toggleMenu()">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
     </div>
   </nav>
   <div class="spacer"></div>
@@ -465,7 +466,7 @@
       });
     });
     
-    // Funzione per il menù hamburger
+    // Funzione per il menu hamburger
     function toggleMenu() {
       const menu = document.querySelector('ul.menu');
       menu.classList.toggle('active');
