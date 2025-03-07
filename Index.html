@@ -211,6 +211,39 @@
     .tariffe-table tr:nth-child(even) {
       background: #f9f9f9;
     }
+    /* Nuova Sezione Recensioni */
+    #recensioni {
+      background: #fff;
+      text-align: center;
+      padding: 60px 0;
+    }
+    #recensioni h2 {
+      font-size: 2em;
+      margin-bottom: 20px;
+    }
+    .recensioni-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+    }
+    .recensione {
+      background: #f4f4f4;
+      border-radius: 10px;
+      padding: 20px;
+      max-width: 350px;
+      flex: 1 1 300px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    .recensione p {
+      margin-bottom: 10px;
+    }
+    .recensione .autore {
+      font-style: italic;
+      font-weight: bold;
+      color: #ff9800;
+      text-align: right;
+    }
     /* Sezione Prenotazione */
     #prenotazione {
       text-align: center;
@@ -298,7 +331,7 @@
         margin: 10px 20px 10px 0;
       }
       /* Riduzione dell'altezza minima delle sezioni per dispositivi più piccoli */
-      #presentazione, #tariffe {
+      #presentazione, #tariffe, #recensioni {
         min-height: 400px;
       }
       #presentazione h1 {
@@ -403,6 +436,27 @@
           <td>500€</td>
         </tr>
       </table>
+    </div>
+  </section>
+  
+  <!-- Nuova Sezione Recensioni -->
+  <section id="recensioni">
+    <div class="container">
+      <h2>Recensioni</h2>
+      <div class="recensioni-grid">
+        <div class="recensione">
+          <p>"Un soggiorno indimenticabile! L'appartamento è spazioso e ben arredato, perfetto per rilassarsi a Chiavari. Consigliatissimo!"</p>
+          <p class="autore">- Marco R.</p>
+        </div>
+        <div class="recensione">
+          <p>"La posizione è eccellente, a pochi passi dal mare e dal centro storico. Pulito, accogliente e con una vista mozzafiato."</p>
+          <p class="autore">- Elena G.</p>
+        </div>
+        <div class="recensione">
+          <p>"Ottima scelta per una vacanza in famiglia! L'appartamento offre tutti i comfort e un'atmosfera rilassante."</p>
+          <p class="autore">- Giovanni L.</p>
+        </div>
+      </div>
     </div>
   </section>
   
