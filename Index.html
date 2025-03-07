@@ -538,6 +538,12 @@
     function submitFormWhatsApp(event) {
       event.preventDefault();
       
+      // Verifica se l'utente sta usando un dispositivo mobile
+      if (!/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+        alert("La compilazione del form e l'invio via WhatsApp sono disponibili solo su dispositivi mobili. Contatta il numero xxxxxxx");
+        return;
+      }
+
       // Recupera i valori dal form
       var nome = document.getElementById('nome').value;
       var email = document.getElementById('email').value;
