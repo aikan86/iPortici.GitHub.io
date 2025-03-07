@@ -45,7 +45,7 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      position: relative;
+      position: relative; /* Per posizionare il menu assolutamente */
     }
     /* Logo resizable */
     .logo img {
@@ -211,7 +211,7 @@
     .tariffe-table tr:nth-child(even) {
       background: #f9f9f9;
     }
-    /* Sezione Recensioni */
+    /* Nuova Sezione Recensioni */
     #recensioni {
       background: #fff;
       text-align: center;
@@ -440,7 +440,7 @@
     </div>
   </section>
   
-  <!-- Sezione Recensioni -->
+  <!-- Nuova Sezione Recensioni -->
   <section id="recensioni">
     <div class="container">
       <h2>Recensioni</h2>
@@ -462,11 +462,10 @@
   </section>
   
   <!-- Sezione Prenotazione / Richiesta Info -->
-  <!-- Ora il form, al submit, richiama addEventToCalendar -->
   <section id="prenotazione">
     <div class="container">
       <h2>Richiedi Informazioni</h2>
-      <form onsubmit="addEventToCalendar(event)">
+      <form onsubmit="submitFormWhatsApp(event)">
         <div class="form-group">
           <label for="nome">Nome</label>
           <input type="text" id="nome" name="nome" placeholder="Il tuo nome" required>
@@ -491,7 +490,7 @@
           <label for="messaggio">Messaggio</label>
           <textarea id="messaggio" name="messaggio" rows="5" placeholder="Scrivi il tuo messaggio..."></textarea>
         </div>
-        <button type="submit">Aggiungi Evento al Calendario</button>
+        <button type="submit">Invia Richiesta su Whatapp</button>
       </form>
     </div>
   </section>
@@ -503,7 +502,7 @@
     </div>
   </footer>
   
-  <!-- Script per il Lightbox, il menu hamburger e l'aggiunta all'evento Google Calendar -->
+  <!-- Script per il Lightbox e il menu hamburger -->
   <script>
     document.addEventListener('DOMContentLoaded', function(){
       const lightbox = document.getElementById('lightbox');
@@ -534,40 +533,38 @@
       const menu = document.querySelector('ul.menu');
       menu.classList.toggle('active');
     }
-    
-    // Funzione per aggiungere l'evento a Google Calendar (Click-to-Add)
-    function addEventToCalendar(event) {
+  </script>
+  <script>
+    function submitFormWhatsApp(event) {
       event.preventDefault();
       
+      // Verifica se l'utente sta usando un dispositivo mobile
+      if (!/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+        alert("La compilazione del form e l'invio via WhatsApp sono disponibili solo su dispositivi mobili. Contatta il numero xxxxxxx");
+        return;
+      }
+
       // Recupera i valori dal form
       var nome = document.getElementById('nome').value;
-      var arrivo = document.getElementById('arrivo').value; // formato YYYY-MM-DD
-      var partenza = document.getElementById('partenza').value; // formato YYYY-MM-DD
+      var email = document.getElementById('email').value;
+      var telefono = document.getElementById('telefono').value;
+      var arrivo = document.getElementById('arrivo').value;
+      var partenza = document.getElementById('partenza').value;
+      var messaggio = document.getElementById('messaggio').value;
       
-      // Costruisci il titolo dell'evento
-      var eventTitle = encodeURIComponent("Prenotazione i Portici - " + nome);
+      // Costruisci il messaggio (ricorda di codificare l'URL)
+      var testo = encodeURIComponent(
+        "Ciao, sono " + nome + " (email: " + email + ", telefono: " + telefono + "). " +
+        "Vorrei prenotare dal " + arrivo + " al " + partenza + ". " +
+        "Messaggio: " + messaggio
+      );
       
-      // Prepara i dettagli dell'evento
-      var details = encodeURIComponent("Prenotazione dal " + arrivo + " al " + partenza);
-      var location = encodeURIComponent("Chiavari, Italy");
+      // Costruisci l'URL per WhatsApp (sostituisci il numero con il tuo)
+      var waURL = "https://wa.me/393472114994?text=" + testo;
       
-      // Converte le date nel formato richiesto da Google Calendar (YYYYMMDD)
-      var startDate = arrivo.replace(/-/g, '');
-      // Per un evento "all-day", Google Calendar richiede che la data di fine sia il giorno successivo al termine dell'evento.
-      var departureDateObj = new Date(partenza);
-      departureDateObj.setDate(departureDateObj.getDate() + 1);
-      var endDate = departureDateObj.toISOString().split('T')[0].replace(/-/g, '');
-      
-      // Costruisci l'URL per la creazione dell'evento su Google Calendar
-      var calendarURL = "https://calendar.google.com/calendar/render?action=TEMPLATE" +
-                        "&text=" + eventTitle +
-                        "&dates=" + startDate + "/" + endDate +
-                        "&details=" + details +
-                        "&location=" + location;
-      
-      // Apri il link in una nuova finestra
-      window.open(calendarURL, '_blank');
+      // Reindirizza l'utente a WhatsApp
+      window.location.href = waURL;
     }
-  </script>
+    </script>
 </body>
 </html>
