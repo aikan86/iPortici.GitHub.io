@@ -464,7 +464,7 @@
   <section id="prenotazione">
     <div class="container">
       <h2>Richiedi Informazioni</h2>
-      <form action="sendmail.php" method="post">
+      <form onsubmit="submitFormWhatsApp(event)">
         <div class="form-group">
           <label for="nome">Nome</label>
           <input type="text" id="nome" name="nome" placeholder="Il tuo nome" required>
@@ -533,5 +533,31 @@
       menu.classList.toggle('active');
     }
   </script>
+  <script>
+    function submitFormWhatsApp(event) {
+      event.preventDefault();
+      
+      // Recupera i valori dal form
+      var nome = document.getElementById('nome').value;
+      var email = document.getElementById('email').value;
+      var telefono = document.getElementById('telefono').value;
+      var arrivo = document.getElementById('arrivo').value;
+      var partenza = document.getElementById('partenza').value;
+      var messaggio = document.getElementById('messaggio').value;
+      
+      // Costruisci il messaggio (ricorda di codificare l'URL)
+      var testo = encodeURIComponent(
+        "Ciao, sono " + nome + " (email: " + email + ", telefono: " + telefono + "). " +
+        "Vorrei prenotare dal " + arrivo + " al " + partenza + ". " +
+        "Messaggio: " + messaggio
+      );
+      
+      // Costruisci l'URL per WhatsApp (sostituisci il numero con il tuo)
+      var waURL = "https://wa.me/393888490525?text=" + testo;
+      
+      // Reindirizza l'utente a WhatsApp
+      window.location.href = waURL;
+    }
+    </script>
 </body>
 </html>
